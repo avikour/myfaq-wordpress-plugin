@@ -6,16 +6,18 @@
 		ob_start();
 		
 		 $secondary_query = new WP_Query( array(
-			 								'post_type'    =>  'questions',
-			 								'posts_per_page' => $atts[limit],
-			 								'tax_query' => array(
-												array(
-													'taxonomy' => 'faq',
-													'field' => 'slug',
-													'terms' => $atts[category],
-													'operator' => 'IN'
-													)
-												)
+			 								'post_type'      =>  'questions',
+			 								'posts_per_page' =>  $atts[limit],
+			 								'tax_query'      =>  array(
+													array(
+														'taxonomy' => 'faq',
+														'field'    => 'slug',
+														'terms'    => $atts[category],
+														'operator' => 'IN'
+														)
+													),
+			 								'order'          =>  'ASC',
+											'orderby'        =>  'ID'
 											)
 										);
 				if ( $secondary_query->have_posts() ) {

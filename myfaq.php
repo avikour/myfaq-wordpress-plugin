@@ -4,7 +4,7 @@
  * Description: This plugin adds some FAQs.
  * Author Name: Avneet
  */
-
+include_once("shortcode.php");
 
 add_action( 'init', 'create_plugin_post_type');
 
@@ -13,9 +13,9 @@ add_action( 'init', 'create_plugin_post_type');
 			'questions', // CPT
 			array(
 			  'labels' => array(
-				'name' => __( 'Questions' ),
-				'singular_name' => __( 'Question' )
-			  ),
+					'name' => __( 'Questions' ),
+					'singular_name' => __( 'Question' )
+				  ),
 			  'public' => true,
 			  'has_archive' => true,
 			  'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields',
@@ -25,7 +25,7 @@ add_action( 'init', 'create_plugin_post_type');
 		
 		register_taxonomy( 
 			'faq', //taxonomy
-		  'questions', //CPT
+		    'questions', //CPT
 		  array(
 			'label' => __( 'FAQs', 'taxonomy general name' ),
 			'labels' => array(
@@ -37,7 +37,5 @@ add_action( 'init', 'create_plugin_post_type');
 			)
 		 );
 	}
-
-include_once("shortcode.php");
 
 ?>
