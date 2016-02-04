@@ -6,7 +6,6 @@
  */
 
 include_once("shortcode.php");
-//include_once("accordion.php");
 
 add_action( 'init', 'create_plugin_post_type');
 
