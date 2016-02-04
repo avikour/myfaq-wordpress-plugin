@@ -4,7 +4,9 @@
  * Description: This plugin adds some FAQs.
  * Author Name: Avneet
  */
+
 include_once("shortcode.php");
+//include_once("accordion.php");
 
 add_action( 'init', 'create_plugin_post_type');
 
@@ -38,4 +40,21 @@ add_action( 'init', 'create_plugin_post_type');
 		 );
 	}
 
-?>
+	
+	add_action( 'wp_enqueue_scripts', 'myfaq_enqueue' );
+
+	function myfaq_enqueue() {
+		
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-ui-accordion'); 
+		wp_register_script('myfaq-custom-js', plugin_dir_url(__FILE__).'/accordion.js', 'jquery-ui-accordion');
+		wp_enqueue_script('myfaq-custom-js');
+		wp_register_style('myfaq-style', plugin_dir_url(__FILE__).'/jquery-ui.css');
+		wp_enqueue_style('myfaq-style');
+		
+	}
+
+
+
+	?>
+

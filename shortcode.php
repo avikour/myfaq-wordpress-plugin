@@ -21,22 +21,21 @@
 											)
 										);
 				if ( $secondary_query->have_posts() ) {
-					while ( $secondary_query->have_posts() ) {
-						$secondary_query->the_post();
-							echo '
-								<div class="row">
-									<div class="col-lg-8 col-lg-offset-2 centered">
-							';
-								the_post(); 
-								the_post_thumbnail('thumbnail');
-								the_title( '<h1>', '</h1>' );
-								the_content();
-							echo '
-									</div>
-								</div>
-							';
+
+					echo '<div class="myfaq-block">';
+						while ( $secondary_query->have_posts() ) {
+							$secondary_query->the_post();
+
+								the_title( '<h3 class="myfaq-question">', '</h3>' );
+								echo '<div class="myfaq-answer">'; //Open the container		
+											the_content();
+								echo '</div>' ;//Close the container
 						} // end while
-					} // end if
+					echo '</div>';
+
+				} // end if
+
+
 		wp_reset_postdata();
 		return ob_get_clean();
 	} 
